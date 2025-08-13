@@ -1,0 +1,89 @@
+import React, { Component } from "react";
+import Slider from "react-slick";
+
+function PauseOnHover() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
+  };
+  return (
+    <div className="slider-container">
+      <Slider {...settings}>
+        <div>
+          <h3>1</h3>
+        </div>
+        <div>
+          <h3>2</h3>
+        </div>
+        <div>
+          <h3>3</h3>
+        </div>
+        <div>
+          <h3>4</h3>
+        </div>
+        <div>
+          <h3>5</h3>
+        </div>
+        <div>
+          <h3>6</h3>
+        </div>
+      </Slider>
+    </div>
+  );
+}
+
+export default PauseOnHover;
+
+-----------------------------------------------------------
+
+
+import React from 'react'
+import { Link } from 'react-router-dom';
+import { HiSpeakerphone } from "react-icons/hi";
+import { FaTape } from "react-icons/fa6";
+import Slider from "react-slick";
+
+function Header({data}) {
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
+  };
+
+console.log(data)
+
+return (
+    <div className='flex h-[48vh] w-full overflow-auto'>
+
+    {data.map((val, index) => (
+    <Slider className='min-w-full flex flex-col gap-3  pt-40 pl-18 text-white items-start '
+    style={{
+background:`linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${val.backdrop_path || val.profile_path})`,
+backgroundPosition:'center',
+backgroundSize:'cover'
+    }}
+    >
+        <h1 className='font-black text-4xl'>{val.original_title || val.original_name}</h1>
+        <p className='w-[70%]'>{val.overview?.slice(0,170)  } <Link className='text-blue-400'>...more</Link> </p> 
+        <div className='flex text-yellow-500 items-center uppercase'>
+            <span><HiSpeakerphone /></span> <p className='text-white ml-2 text-sm'>{val.release_date?val.release_date:"No Info"}</p>
+            <span className='ml-7'><FaTape /></span> <p className='text-white ml-2 text-sm'>{val.media_type}</p>
+        </div>
+        <Link className='bg-[#6556CD] p-3 rounded'>Watch Trailer</Link>
+    </Slider>
+    ))}
+</div>
+)
+}
+
+export default Header

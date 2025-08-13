@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+
+/* primary - #1F1E24   */
+/* secondary - #6556CD */
+
+
+html,body{
+    background-color: #1F1E24;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #49494c;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6556cd;
+    border-radius: 10px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #27272a;
+    background-image: none;
+    flex: 1;
+    padding: 0 0.5em;
+    padding-left: 1em;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Open Sans", sans-serif;
+}
+select::-ms-expand {
+    display: none;
+}
+.select {
+    position: relative;
+    display: flex;
+    width: 10em;
+    height: 3em;
+    line-height: 3;
+    background: #27272a;
+    overflow: hidden;
+    border-radius: 0.25em;
+}
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #27272a;
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.25s all ease;
+}
+.select:hover::after {
+    color: #6556cd;
+}
+
+
+
+::-webkit-scrollbar {
+width: 10px;
+}
+
+::-webkit-scrollbar-track {
+background: #1F1E24;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  border: 2px solid #1F1E24; /* Optional: border to blend with track */
+}
+
+/* Kill horizontal scrollbar from Infinite Scroll */
+.infinite-scroll-component__outerdiv,
+.infinite-scroll-component {
+  overflow-x: hidden !important; /* No horizontal scrolling */
+  max-width: 100% !important;    /* Never exceed viewport */
+}
+
+body {
+  overflow-x: hidden; /* Just in case something else causes it */
+}
